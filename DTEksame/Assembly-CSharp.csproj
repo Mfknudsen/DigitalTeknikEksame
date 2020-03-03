@@ -89,6 +89,8 @@
      <Compile Include="Assets\Packages\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\Packages\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\Packages\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+     <Compile Include="Assets\Scripts\MP_Login\Login.cs" />
+     <Compile Include="Assets\Scripts\MP_Login\MP.cs" />
      <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Packages\Photon\PhotonUnityNetworking\changelog.txt" />
