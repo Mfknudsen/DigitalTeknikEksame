@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 #endregion
 
 public class Settings : MonoBehaviour
@@ -10,6 +11,7 @@ public class Settings : MonoBehaviour
     public float VolumeSetting = 0.0f;
     [HideInInspector]
     public List<AudioSource> AudioSources = new List<AudioSource>();
+    public PauseMenu PM;
     #endregion
 
     #region Private Data
@@ -18,9 +20,6 @@ public class Settings : MonoBehaviour
 
     void Start()
     {
-        GameObject G = GameObject.FindGameObjectWithTag("Login");
-        G.GetComponent<Login>().GetOptions(this);
-
         GameObject[] GetSources = GameObject.FindGameObjectsWithTag("AudioPlayers");
 
         foreach (GameObject GO in GetSources)
@@ -49,12 +48,19 @@ public class Settings : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log(VolumeSetting);
     }
 
-    public void SetSettingsByOptions(float VolumeOption)
+    public void SetSettingsByOptions(Login L)
     {
-        VolumeSetting = VolumeOption;
+        L.GetOptions(this);
+
+        StartCoroutine(DelayUnloadLogin());
+    }
+
+    IEnumerator DelayUnloadLogin()
+    {
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.UnloadSceneAsync("Login");
     }
 }

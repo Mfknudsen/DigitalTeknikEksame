@@ -11,23 +11,40 @@ public class Login : MonoBehaviour {
     [Header("Screens")]
     public GameObject MenuScreen;
     public GameObject OptionsScreen;
+    public GameObject LoadingScreen;
     [Header("TextFields")]
     public TextMeshProUGUI VolumeText;
+    public TextMeshProUGUI LoadingProgressText;
+    [Header("Camera")]
+    public GameObject Cam;
     #endregion
 
     #region Private Data
     private float SoundLevel = 1.0f;
+    AsyncOperation asyncLoad = null;
     #endregion
 
     void Start () {
         OptionsScreen.SetActive (false);
         MenuScreen.SetActive (true);
+        LoadingScreen.SetActive (false);
 
         VolumeText.text = (SoundLevel*100)+"%";
     }
-    
+
+    void Update()
+    {
+        while (asyncLoad != null)
+        { 
+            Debug.Log(asyncLoad.progress);
+            LoadingProgressText.text = Mathf.Floor(asyncLoad.progress * 100) + "%";
+        }
+    }
+
     public void LoginNow () {
-        StartCoroutine (LoadMainAsync ());
+        MenuScreen.SetActive(false);
+        LoadingScreen.SetActive(true);
+        StartCoroutine (LoadMain ());
     }
 
     public void Options () {
@@ -55,11 +72,22 @@ public class Login : MonoBehaviour {
         S.VolumeSetting = SoundLevel;
     }
 
-    IEnumerator LoadMainAsync () {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync ("Main");
-        
+    IEnumerator LoadMain () {
+        asyncLoad = SceneManager.LoadSceneAsync ("Main", LoadSceneMode.Additive);
+
+        Cam.GetComponent<AudioListener>().enabled = false;
+
         while (!asyncLoad.isDone) {
-            yield return null;
+             yield return null;
         }
+
+        GameObject G_Temp = GameObject.FindGameObjectWithTag("SettingsManager");
+
+        if (G_Temp != null)
+        {
+            G_Temp.GetComponent<Settings>().SetSettingsByOptions(this);
+        }
+
+        asyncLoad = null;
     }
 }
