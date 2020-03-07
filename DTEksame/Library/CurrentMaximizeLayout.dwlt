@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 577, y: 450}
-  m_MaxSize: {x: 14000, y: 14021}
+  m_MinSize: {x: 579, y: 471}
+  m_MaxSize: {x: 14001, y: 14021}
   vertical: 0
-  controlID: 1749
+  controlID: 3529
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -135,10 +135,10 @@ MonoBehaviour:
     y: 0
     width: 1275
     height: 947
-  m_MinSize: {x: 302, y: 450}
+  m_MinSize: {x: 303, y: 471}
   m_MaxSize: {x: 10000, y: 14021}
   vertical: 1
-  controlID: 1750
+  controlID: 3530
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,10 +160,10 @@ MonoBehaviour:
     y: 0
     width: 1275
     height: 671
-  m_MinSize: {x: 302, y: 200}
-  m_MaxSize: {x: 8002, y: 4021}
+  m_MinSize: {x: 303, y: 221}
+  m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 1751
+  controlID: 3360
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,8 +183,8 @@ MonoBehaviour:
     y: 0
     width: 403
     height: 671
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -221,7 +221,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 3afaffffbcfaffff70fbffff423c00007c3c0000
+      m_ExpandedIDs: c4faffff70fbffff644000008a400000ec400000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -310,9 +310,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 445.27142, y: 386.20047, z: -28.618671}
+    m_Target: {x: 461.96402, y: 315.65933, z: -77.36517}
     speed: 2
-    m_Value: {x: 445.27142, y: 386.20047, z: -28.618671}
+    m_Value: {x: 461.96402, y: 315.65933, z: -77.36517}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -358,20 +358,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.013743987, y: 0.0973318, z: -0.0013438759, w: 0.9951587}
+    m_Target: {x: -0.020635206, y: -0.07192828, z: -0.0014869564, w: 0.99719954}
     speed: 2
-    m_Value: {x: 0.013743953, y: 0.09733155, z: -0.0013438725, w: 0.99515617}
+    m_Value: {x: -0.020635117, y: -0.07192797, z: -0.00148695, w: 0.99719524}
   m_Size:
-    m_Target: 598.53217
+    m_Target: 89.53351
     speed: 2
-    m_Value: 598.53217
+    m_Value: 89.53351
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 1.9
-    m_SpeedNormalized: 0.94000006
+    m_Speed: 1
+    m_SpeedNormalized: 0.52000046
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -435,9 +435,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 201
+    x: 403
     y: 73
-    width: 1072
+    width: 870
     height: 650
   m_ViewDataDictionary: {fileID: 0}
   m_SplitPaneLeftWidth: 300
@@ -507,20 +507,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Images
+    - Assets/_Scripts/Main
   m_ViewMode: 1
   m_StartGridSize: 61
   m_LastFolders:
-  - Assets/Images
+  - Assets/_Scripts/Main
   m_LastFoldersGridSize: 61
-  m_LastProjectPath: C:\Users\Bruger\Desktop\Skole\3.G\Digital Teknik\_Eksame\DigitalTeknikEksame\DTEksame
+  m_LastProjectPath: C:\Users\Mads\Documents\GitHub\DigitalTeknikEksame\DTEksame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 95}
-    m_SelectedIDs: 444a0000
-    m_LastClickedID: 19012
-    m_ExpandedIDs: 00000000c63c0000c83c0000ca3c0000cc3c000000ca9a3b
+    scrollPos: {x: 0, y: 53}
+    m_SelectedIDs: 2a3d0000
+    m_LastClickedID: 15658
+    m_ExpandedIDs: 00000000043d0000063d0000083d00000a3d00000c3d00000e3d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -548,7 +548,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c63c0000c83c0000ca3c0000cc3c000000ca9a3b
+    m_ExpandedIDs: 00000000043d0000063d0000083d00000a3d00000c3d00000e3d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -573,9 +573,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 3afaffff
-    m_LastClickedInstanceID: -1478
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 9e2d0000
+    m_LastClickedInstanceID: 11678
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000004250000be260000ee240000f0240000e024000000000000f23d000004690000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -592,7 +592,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 14}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 61
   m_SkipHiddenPackages: 0
-  m_DirectoriesAreaWidth: 170
+  m_DirectoriesAreaWidth: 172
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -649,8 +649,8 @@ MonoBehaviour:
     y: 0
     width: 645
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -659,7 +659,7 @@ MonoBehaviour:
   - {fileID: 18}
   - {fileID: 19}
   m_Selected: 0
-  m_LastSelected: 4
+  m_LastSelected: 3
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -696,7 +696,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-  m_LastInspectedObjectInstanceID: -1478
+  m_LastInspectedObjectInstanceID: 11678
   m_LastVerticalScrollValue: 0
 --- !u!114 &16
 MonoBehaviour:
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_PosLeft: {x: 0, y: 0}
   m_PosRight: {x: 0, y: 0}
   m_Scope: 1
-  m_SplitterFlex: 0
+  m_SplitterFlex: 0.2
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
