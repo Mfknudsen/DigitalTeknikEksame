@@ -22,7 +22,15 @@ public class PauseMenu : MonoBehaviour
 
     #region Private Data
     bool IsGamePaused = false;
+    float Temp_SoundVolume = 1;
     #endregion
+
+    private void Start()
+    {
+        MenuScreen.SetActive(false);
+        OptionsScreen.SetActive(false);
+        LoadingScreen.SetActive(false);
+    }
 
     private void Update()
     {
@@ -48,6 +56,8 @@ public class PauseMenu : MonoBehaviour
     public void UnpauseGame()
     {
         MenuScreen.SetActive(false);
+        OptionsScreen.SetActive(false);
+        LoadingScreen.SetActive(false);
     }
 
     public void Options()
@@ -69,7 +79,8 @@ public class PauseMenu : MonoBehaviour
 
     public void SetVolume(float newVolume)
     {
-        Settings.VolumeSetting = newVolume;
+        Temp_SoundVolume = newVolume;
+        Settings.VolumeSetting = Temp_SoundVolume;
         VolumeText.text = Mathf.Floor(Settings.VolumeSetting * 100) + "%";
     }
 }

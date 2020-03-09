@@ -239,7 +239,7 @@ MonoBehaviour:
   OptionsScreen: {fileID: 1842191179}
   LoadingScreen: {fileID: 437055677}
   VolumeText: {fileID: 2088967923}
-  LoadingProgressText: {fileID: 0}
+  LoadingProgressText: {fileID: 1456130818}
   Cam: {fileID: 669189732}
 --- !u!1 &128137009
 GameObject:
