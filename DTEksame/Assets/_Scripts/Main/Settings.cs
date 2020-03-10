@@ -18,7 +18,7 @@ public class Settings : MonoBehaviour
     bool GameReady = false;
     #endregion
 
-    void Start()
+    private void Start()
     {
         GameObject[] GetSources = GameObject.FindGameObjectsWithTag("AudioPlayers");
 
@@ -36,11 +36,11 @@ public class Settings : MonoBehaviour
         }
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         if (AudioSources.Count != 0)
         {
-            if (AudioSources[0].volume != VolumeSetting)
+            while (AudioSources[0].volume != VolumeSetting)
             {
                 foreach (AudioSource AS in AudioSources)
                 {
@@ -53,14 +53,23 @@ public class Settings : MonoBehaviour
     public void SetSettingsByOptions(Login L)
     {
         L.GetOptions(this);
+        PM.SetVolume(VolumeSetting);
+        PM.Scrollbar.value = VolumeSetting;
 
-        StartCoroutine(DelayUnloadLogin());
+        StartCoroutine(DelayUnloadLogin(L));
     }
 
-    IEnumerator DelayUnloadLogin()
+    private IEnumerator DelayUnloadLogin(Login L)
     {
-        yield return new WaitForSeconds(1f);
-
-        SceneManager.UnloadSceneAsync("Login");
+        if (!L.MPLoadComplete)
+        {
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(DelayUnloadLogin(L));
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+            SceneManager.UnloadSceneAsync("Login");
+        }
     }
 }

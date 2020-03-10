@@ -121,6 +121,12 @@
     <Compile Include="Assets\_Scripts\Puzzel\Lever.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\Lever_Handel.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\PressurePlate.cs" />
+    <Compile Include="Assets\_Scripts\Puzzel\Wire.cs" />
+    <Compile Include="Assets\_Scripts\Puzzel\WireCutter.cs" />
+    <Compile Include="Assets\_Scripts\World\Chimny\Spawner.cs" />
+    <Compile Include="Assets\_Scripts\World\Water\PhysicsHelper.cs" />
+    <Compile Include="Assets\_Scripts\World\Water\Water.cs" />
+    <Compile Include="Assets\_Scripts\World\Water\WaterFloat.cs" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Packages\Photon\PhotonUnityNetworking\changelog.txt" />
@@ -766,6 +772,10 @@
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{8C87D5D1-464F-0275-6FCE-A74C95D08D8B}</Project>
       <Name>SteamVR_Windows_EditorHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Actions.csproj">
+      <Project>{A6F355C7-1FDA-5039-02ED-E8E1A969FF7D}</Project>
+      <Name>SteamVR_Actions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,6 +8,10 @@ using TMPro;
 
 public class Login : MonoBehaviour {
     #region Public Data
+    [Header("Resources")]
+    public MP MP;
+    [HideInInspector]
+    public bool MPLoadComplete = false;
     [Header("Screens")]
     public GameObject MenuScreen;
     public GameObject OptionsScreen;
@@ -21,22 +25,31 @@ public class Login : MonoBehaviour {
 
     #region Private Data
     private float SoundLevel = 1.0f;
-    AsyncOperation asyncLoad = null;
+    private AsyncOperation asyncLoad = null;
     #endregion
 
     void Start () {
-        OptionsScreen.SetActive (false);
-        MenuScreen.SetActive (true);
-        LoadingScreen.SetActive (false);
+        if (MP == null)
+        {
+            MP = GetComponent<MP>();
+
+            if (MP == null)
+            {
+                MP = gameObject.AddComponent<MP>();
+            }
+        }
+
+        OptionsScreen.SetActive(false);
+        MenuScreen.SetActive(true);
+        LoadingScreen.SetActive(false);
 
         VolumeText.text = (SoundLevel*100)+"%";
     }
 
     void Update()
     {
-        while (asyncLoad != null)
+        if (asyncLoad != null)
         { 
-            Debug.Log(asyncLoad.progress);
             LoadingProgressText.text = Mathf.Floor(asyncLoad.progress * 100) + "%";
         }
     }
@@ -44,6 +57,9 @@ public class Login : MonoBehaviour {
     public void LoginNow () {
         MenuScreen.SetActive(false);
         LoadingScreen.SetActive(true);
+
+        MP.StartConnection();
+
         StartCoroutine (LoadMain ());
     }
 

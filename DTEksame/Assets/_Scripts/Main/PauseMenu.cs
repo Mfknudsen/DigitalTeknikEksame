@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
 {
     #region Public Data
     [Header("Menu Screens")]
+    public GameObject Background;
     public GameObject MenuScreen;
     public GameObject OptionsScreen;
     public GameObject LoadingScreen;
@@ -18,18 +19,23 @@ public class PauseMenu : MonoBehaviour
     public Settings Settings;
     [Header("Text Boxes")]
     public TextMeshProUGUI VolumeText;
+    [Header("Scrooller")]
+    public Scrollbar Scrollbar;
     #endregion
 
     #region Private Data
     bool IsGamePaused = false;
-    float Temp_SoundVolume = 1;
+    float Temp_SoundVolume;
     #endregion
 
     private void Start()
     {
-        MenuScreen.SetActive(false);
-        OptionsScreen.SetActive(false);
-        LoadingScreen.SetActive(false);
+        if (MenuScreen != null && OptionsScreen != null && LoadingScreen != null && Background != null) {
+            Background.SetActive(false);
+            MenuScreen.SetActive(false);
+            OptionsScreen.SetActive(false);
+            LoadingScreen.SetActive(false);
+        }
     }
 
     private void Update()
@@ -51,10 +57,12 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         MenuScreen.SetActive(true);
+        Background.SetActive(true);
     }
 
     public void UnpauseGame()
     {
+        Background.SetActive(false);
         MenuScreen.SetActive(false);
         OptionsScreen.SetActive(false);
         LoadingScreen.SetActive(false);
