@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 37388
+  controlID: 4219
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 37389
+  controlID: 4220
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 37390
+  controlID: 4221
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -397,10 +397,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 109}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8266fffffaf9ffff08fbffff2efbffff30fbffff52fbffff70fbffff644b00006a4b0000804b0000
+      m_ExpandedIDs: c0ebffff32faffff70fbffffb84c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -460,9 +460,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.5409803, y: 4.803064, z: 7.4354463}
+    m_Target: {x: 12.615986, y: -1.1607795, z: -11.203298}
     speed: 2
-    m_Value: {x: 2.5409803, y: 4.803064, z: 7.4354463}
+    m_Value: {x: 12.615986, y: -1.1607795, z: -11.203298}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -508,9 +508,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.05283623, y: 0.94174534, z: -0.17452317, w: -0.283778}
+    m_Target: {x: -0.100621454, y: -0.8509508, z: 0.1762631, w: -0.48515806}
     speed: 2
-    m_Value: {x: -0.053080324, y: 0.9410061, z: -0.1743858, w: -0.28509563}
+    m_Value: {x: -0.101114966, y: -0.849199, z: 0.17589986, w: -0.4875408}
   m_Size:
     m_Target: 8.908413
     speed: 2
@@ -657,21 +657,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/_Shaders
   m_ViewMode: 1
   m_StartGridSize: 61
   m_LastFolders:
-  - Assets
+  - Assets/_Shaders
   m_LastFoldersGridSize: 61
   m_LastProjectPath: C:\Users\Mads\Documents\GitHub\DigitalTeknikEksame\Teknikfags
     Eksamen
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: b6470000
-    m_LastClickedID: 18358
-    m_ExpandedIDs: 00000000b6470000f04f0000f24f0000f44f0000f64f0000f84f0000fa4f0000fc4f0000fe4f0000005000000250000004500000065000000850000000ca9a3b
+    scrollPos: {x: 0, y: 243}
+    m_SelectedIDs: 9e540000
+    m_LastClickedID: 21662
+    m_ExpandedIDs: 00000000b64700005a5400005c5400005e54000060540000625400006454000066540000685400006a5400006c5400006e540000705400007254000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -699,7 +699,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b6470000f04f0000f24f0000f44f0000f64f0000f84f0000fa4f0000fc4f0000fe4f0000005000000250000004500000065000000850000000ca9a3b
+    m_ExpandedIDs: 00000000b64700005a5400005c5400005e54000060540000625400006454000066540000685400006a5400006c5400006e540000705400007254000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
