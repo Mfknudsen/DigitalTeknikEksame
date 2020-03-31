@@ -30,7 +30,8 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        if (MenuScreen != null && OptionsScreen != null && LoadingScreen != null && Background != null) {
+        if (MenuScreen != null && OptionsScreen != null && LoadingScreen != null && Background != null)
+        {
             Background.SetActive(false);
             MenuScreen.SetActive(false);
             OptionsScreen.SetActive(false);
@@ -46,10 +47,13 @@ public class PauseMenu : MonoBehaviour
             {
                 UnpauseGame();
                 IsGamePaused = false;
-            } else
+                Cursor.visible = false;
+            }
+            else
             {
                 PauseGame();
                 IsGamePaused = true;
+                Cursor.visible = true;
             }
         }
     }

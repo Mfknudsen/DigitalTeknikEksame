@@ -20,7 +20,8 @@ public class MP : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
 
-        if (L == null) {
+        if (L == null)
+        {
             L = GetComponent<Login>();
         }
     }
@@ -50,16 +51,19 @@ public class MP : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("Player has joined a room");
-        Debug.Log("There is currently " + PhotonNetwork.CountOfPlayers + " in this room.");
-        L.MPLoadComplete = true;
+        if (!L.MPLoadComplete)
+        {
+            Debug.Log("Player has joined a room");
+            Debug.Log("There is currently " + PhotonNetwork.CountOfPlayers + " in this room.");
+            L.MPLoadComplete = true;
+        }
     }
 
     private IEnumerator TryConnectAgain()
     {
         yield return new WaitForSeconds(5f);
 
-        if (!GameIsReady) 
+        if (!GameIsReady)
         {
             PhotonNetwork.ConnectUsingSettings();
         }

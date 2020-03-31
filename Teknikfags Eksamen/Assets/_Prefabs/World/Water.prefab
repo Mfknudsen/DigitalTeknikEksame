@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1692322933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692322934}
+  m_Layer: 0
+  m_Name: EndPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1692322934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692322933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3390258018466721389}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7185033877545971982
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +41,7 @@ GameObject:
   - component: {fileID: 3390258018466721389}
   - component: {fileID: -162708001840859615}
   - component: {fileID: 935379895}
+  - component: {fileID: 1714965948}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -27,8 +58,9 @@ Transform:
   m_GameObject: {fileID: 7185033877545971982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children:
+  - {fileID: 1692322934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921e10ffc6cd8d6459194cf260f3104f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dimension: 10
+  Dimension: 20
   UVScale: 2
   Octaves:
   - speed: {x: 0.5, y: 0.5}
@@ -53,7 +85,7 @@ MonoBehaviour:
     alternate: 1
   - speed: {x: 0, y: 5}
     scale: {x: 1.3, y: 5}
-    height: 1
+    height: 0.25
     alternate: 0
 --- !u!23 &935379895
 MeshRenderer:
@@ -94,3 +126,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1714965948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185033877545971982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fba1d4658f4b05468b0f402b7bd403d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShouldRise: 0
+  RiseSpeed: 0.01
+  EndTransform: {fileID: 1692322933}

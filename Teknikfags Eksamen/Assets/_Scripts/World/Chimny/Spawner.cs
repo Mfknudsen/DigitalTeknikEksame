@@ -5,18 +5,26 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [Header("Spawnable Prefabs:")]
     public string[] Keys;
     public GameObject[] Prefabs;
+    [Header("World Values:")]
     public Transform SpawnPoint;
 
-    private Dictionary<string, GameObject> SpawnablePrefabs;
+    private Dictionary<string, GameObject> SpawnablePrefabs = new Dictionary<string, GameObject>();
     private GameObject ObjectToSpawn = null;
-    
+
     private void Start()
     {
-        for (int i = 0; i < Keys.Length; i++)
+        if (Keys.Length > 0 && Prefabs.Length > 0)
         {
-            SpawnablePrefabs[Keys[i]] = Prefabs[i]; 
+            for (int i = 0; i < Keys.Length; i++)
+            {
+                if (Prefabs[i] != null && Keys[i] != null)
+                {
+                    SpawnablePrefabs[Keys[i]] = Prefabs[i];
+                }
+            }
         }
     }
 

@@ -36,6 +36,11 @@ public class Settings : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        Cursor.visible = false;
+    }
+
     private void FixedUpdate()
     {
         if (AudioSources.Count != 0)

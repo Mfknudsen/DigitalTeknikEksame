@@ -8,7 +8,9 @@ public class Buttom : MonoBehaviour
 {
     #region public DATA
     [Header("Required Input:")]
+    public bool isConstant = false;
     public GameObject Visual;
+    public Material OffColor, OnColor;
     [HideInInspector]
     public bool active = false;
     public Transform rest;
@@ -20,18 +22,40 @@ public class Buttom : MonoBehaviour
     Vector3 restTransform;
     Vector3 downTransform;
     Vector3 targetTransform;
+    MeshRenderer VisualRendere;
     #endregion
 
     void Start()
     {
+        VisualRendere = Visual.GetComponent<MeshRenderer>();
+
         downTransform = transform.position;
         restTransform = rest.transform.position;
-        SwitchActive(false);
+        if (!isConstant)
+        {
+            SwitchActive(false);
+        }
+        else
+        {
+            SwitchActive(true);
+        }
     }
 
     void Update()
     {
         MoveButtom();
+
+        if (isConstant)
+        {
+            if (VisualRendere.material != OnColor && active)
+            {
+                VisualRendere.material = OnColor;
+            }
+            else if (VisualRendere.material != OffColor && !active)
+            {
+                VisualRendere.material = OffColor;
+            }
+        }
 
         if (ACTIVATE == true)
         {
@@ -56,15 +80,34 @@ public class Buttom : MonoBehaviour
 
     public void SwitchActive(bool isInHand)
     {
-        if (isInHand == true)
+        if (!isConstant)
         {
-            targetTransform = downTransform;
-            active = true;
+            if (isInHand == true)
+            {
+                targetTransform = downTransform;
+                active = true;
+            }
+            else
+            {
+                targetTransform = restTransform;
+                active = false;
+            }
         }
         else
         {
-            targetTransform = restTransform;
-            active = false;
+            if (isInHand)
+            {
+                if (active == false)
+                {
+                    targetTransform = downTransform;
+                    active = true;
+                }
+                else
+                {
+                    targetTransform = restTransform;
+                    active = false;
+                }
+            }
         }
     }
 

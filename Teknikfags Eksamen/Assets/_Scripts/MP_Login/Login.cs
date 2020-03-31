@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 #endregion
 
-public class Login : MonoBehaviour {
+public class Login : MonoBehaviour
+{
     #region Public Data
     [Header("Resources")]
     public MP MP;
@@ -28,7 +29,8 @@ public class Login : MonoBehaviour {
     private AsyncOperation asyncLoad = null;
     #endregion
 
-    void Start () {
+    void Start()
+    {
         if (MP == null)
         {
             MP = GetComponent<MP>();
@@ -43,38 +45,42 @@ public class Login : MonoBehaviour {
         MenuScreen.SetActive(true);
         LoadingScreen.SetActive(false);
 
-        VolumeText.text = (SoundLevel*100)+"%";
+        VolumeText.text = (SoundLevel * 100) + "%";
     }
 
     void Update()
     {
         if (asyncLoad != null)
-        { 
+        {
             LoadingProgressText.text = Mathf.Floor(asyncLoad.progress * 100) + "%";
         }
     }
 
-    public void LoginNow () {
+    public void LoginNow()
+    {
         MenuScreen.SetActive(false);
         LoadingScreen.SetActive(true);
 
         MP.StartConnection();
 
-        StartCoroutine (LoadMain ());
+        StartCoroutine(LoadMain());
     }
 
-    public void Options () {
-        OptionsScreen.SetActive (true);
-        MenuScreen.SetActive (false);
+    public void Options()
+    {
+        OptionsScreen.SetActive(true);
+        MenuScreen.SetActive(false);
     }
 
-    public void Exit () {
-        Application.Quit ();
+    public void Exit()
+    {
+        Application.Quit();
     }
 
-    public void Apply () {
-        OptionsScreen.SetActive (false);
-        MenuScreen.SetActive (true);
+    public void Apply()
+    {
+        OptionsScreen.SetActive(false);
+        MenuScreen.SetActive(true);
     }
 
     public void SetVolume(float newVolume)
@@ -88,13 +94,20 @@ public class Login : MonoBehaviour {
         S.VolumeSetting = SoundLevel;
     }
 
-    IEnumerator LoadMain () {
-        asyncLoad = SceneManager.LoadSceneAsync ("Main", LoadSceneMode.Additive);
+    public IEnumerator LoadMain()
+    {
+        asyncLoad = SceneManager.LoadSceneAsync("Main", LoadSceneMode.Additive);
 
         Cam.GetComponent<AudioListener>().enabled = false;
 
-        while (!asyncLoad.isDone) {
-             yield return null;
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        if (!MPLoadComplete)
+        {
+            yield return null;
         }
 
         GameObject G_Temp = GameObject.FindGameObjectWithTag("SettingsManager");
@@ -104,6 +117,7 @@ public class Login : MonoBehaviour {
             G_Temp.GetComponent<Settings>().SetSettingsByOptions(this);
         }
 
+        Cursor.lockState = CursorLockMode.None;
         asyncLoad = null;
     }
 }
