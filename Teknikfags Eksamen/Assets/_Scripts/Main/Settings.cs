@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 #endregion
 
 public class Settings : MonoBehaviour
@@ -20,6 +21,8 @@ public class Settings : MonoBehaviour
 
     private void Start()
     {
+        SteamVR.Initialize(true);
+
         GameObject[] GetSources = GameObject.FindGameObjectsWithTag("AudioPlayers");
 
         foreach (GameObject GO in GetSources)
@@ -34,11 +37,6 @@ public class Settings : MonoBehaviour
         {
             AS.volume = VolumeSetting;
         }
-    }
-
-    private void Awake()
-    {
-        Cursor.visible = false;
     }
 
     private void FixedUpdate()

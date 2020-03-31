@@ -63,6 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Packages\BrokenVector\UltimateDungeonPack\Scenes\Demo\FPControls\Scripts\CharacterController.cs" />
+    <Compile Include="Assets\Packages\BrokenVector\UltimateDungeonPack\Scenes\Demo\FPControls\Scripts\MouseCamLook.cs" />
+    <Compile Include="Assets\Packages\BrokenVector\UltimateDungeonPack\Scripts\LightImprove.cs" />
     <Compile Include="Assets\Packages\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Packages\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Packages\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
@@ -156,11 +159,17 @@
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\Packages\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+    <Reference Include="Unity.XR.Management">
+      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/ScriptAssemblies/Unity.XR.Management.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Subsystem.Registration">
+      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/ScriptAssemblies/Unity.Subsystem.Registration.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
       <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
@@ -194,6 +203,9 @@
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.Management.Editor">
+      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/ScriptAssemblies/Unity.XR.Management.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>

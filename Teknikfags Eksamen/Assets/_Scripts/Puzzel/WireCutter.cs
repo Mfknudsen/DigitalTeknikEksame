@@ -14,6 +14,7 @@ public class WireCutter : MonoBehaviour
     public SteamVR_Input_Sources RightHand;
     public SteamVR_Behaviour_Pose trackedHandLeft;
     public SteamVR_Behaviour_Pose trackedHandRight;
+    public bool VR = false;
     #endregion
 
     #region Private Data
@@ -21,6 +22,7 @@ public class WireCutter : MonoBehaviour
     private bool IsInHand = false;
     [Header("VR Resources")]
     private SteamVR_Action_Boolean Trigger;
+    bool cutNow = false;
     #endregion
 
     private void Start()
@@ -50,6 +52,32 @@ public class WireCutter : MonoBehaviour
 
                 CutWire(W);
             }
+            else if (!VR)
+            {
+                if (Input.GetMouseButton(1) && !cutNow)
+                {
+                    cutNow = true;
+
+                    Debug.Log("Cutting using right click!");
+                    Wire W = WiresInRange[0];
+                    float Dist = Vector3.Distance(transform.position, W.transform.position);
+
+                    foreach (Wire w in WiresInRange)
+                    {
+                        float dist = Vector3.Distance(transform.position, w.transform.position);
+
+                        if (Dist > dist)
+                        {
+                            W = w;
+                            Dist = dist;
+                        }
+                    }
+                }
+                else if (!Input.GetMouseButton(1) && cutNow)
+                {
+                    cutNow = false;
+                }
+            }
         }
     }
 
@@ -75,13 +103,16 @@ public class WireCutter : MonoBehaviour
 
     void OnAttachedToHand()
     {
-        if (Vector3.Distance(transform.position, trackedHandLeft.transform.position) < Vector3.Distance(transform.position, trackedHandRight.transform.position))
+        if (trackedHandLeft != null)
         {
-            currentHand = LeftHand;
-        }
-        else
-        {
-            currentHand = RightHand;
+            if (Vector3.Distance(transform.position, trackedHandLeft.transform.position) < Vector3.Distance(transform.position, trackedHandRight.transform.position))
+            {
+                currentHand = LeftHand;
+            }
+            else
+            {
+                currentHand = RightHand;
+            }
         }
 
         IsInHand = true;
