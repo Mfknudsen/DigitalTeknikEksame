@@ -8,7 +8,6 @@ public class Key : MonoBehaviour
 {
     //Setting up the public value and input.
     #region public Data
-    [HideInInspector]
     public string keyword = "";  //String used to determent what keyholes can be used.
 
     [HideInInspector]
@@ -22,13 +21,13 @@ public class Key : MonoBehaviour
 
     [HideInInspector]
     public GameObject currentKeyhole;  //What keyhole this key is currently placed in.
-    public string ColorName;
     #endregion
 
     #region private Data
     Rigidbody RB;  //The rigidbody of this object.
     Transform Parent;
     #endregion
+
     private void Start()
     {
         RB = GetComponent<Rigidbody>();  //Getting the rigidbody of this object.

@@ -17,7 +17,6 @@ public class Keyhole : MonoBehaviour
     [HideInInspector]
     public MeshRenderer Visual;  //The visual rendere for this object. Used to create a highlight.
     public GameObject Highlight;
-    public string Color;
     #endregion
 
     void Start()  //When the script starts.
@@ -44,13 +43,21 @@ public class Keyhole : MonoBehaviour
         if (other.gameObject.GetComponent<Key>() != null)  //Checks if the object is a key.
         {
             Key k = other.gameObject.GetComponent<Key>();  //Getting the key script.
-
-            if (currentKey == null && k.keyword == keyword)  //Checks if the key has the same keyword as this keyhole and if there already is a key in this keyhole.
+            if (k.keyword == keyword)
             {
                 keysInRange += 1;  //One more key is in range of this keyhole.
-                Visual.enabled = true;  //This keyhole will now show a highlight.
-                k.keyholesInRange.Add(this.gameObject);  //Telling the key that may be placed in this keyhole.
+
+                if (currentKey == null)  //Checks if the key has the same keyword as this keyhole and if there already is a key in this keyhole.
+                {
+                    Visual.enabled = true;  //This keyhole will now show a highlight.
+                    k.keyholesInRange.Add(this.gameObject);  //Telling the key that may be placed in this keyhole.
+                }
             }
+        }
+
+        if (keysInRange > 0)
+        {
+            Visual.enabled = true;
         }
     }
 
@@ -96,7 +103,7 @@ public class Keyhole : MonoBehaviour
 
     void updateKey()  //Updating the position and rotation of the current key placed in this keyhole to match the position and rotation of this keyhole.
     {
-        currentKey.transform.position = transform.position - new Vector3(0,0,0.1f);
-        currentKey.transform.rotation = Quaternion.Euler(270,270,270);
+        currentKey.transform.position = Highlight.transform.position;
+        currentKey.transform.rotation = Highlight.transform.rotation;
     }
 }

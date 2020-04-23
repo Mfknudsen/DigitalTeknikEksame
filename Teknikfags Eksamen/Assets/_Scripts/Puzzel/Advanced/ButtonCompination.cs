@@ -5,13 +5,14 @@ using UnityEngine;
 public class ButtonCompination : MonoBehaviour
 {
     public GameObject Button;
-    public GameObject[] Transforms;
     public string[] KeyIDs;
     private string[] CurrentKeys;
     List<bool> Desider = new List<bool>();
     Dictionary<string, List<bool>> BoolsForKey = new Dictionary<string, List<bool>>();
     public bool Active = false;
     public Material OffColor, OnColor;
+    public string activeIDs = "";
+    public List<Buttom> buttons = new List<Buttom>();
 
     private void Start()
     {
@@ -26,107 +27,73 @@ public class ButtonCompination : MonoBehaviour
 
     private void CheckButtons()
     {
-        if (CurrentKeys.Length > 0)
+        foreach (Buttom B in buttons)
         {
-            for (int i = 0; i < CurrentKeys.Length; i++)
-            {
-                string key = CurrentKeys[i];
-                List<Buttom> Bs = new List<Buttom>();
 
-                foreach (Transform child in Transforms[i].transform)
-                {
-                    if (child.GetComponent<Buttom>() != null)
-                    {
-                        Bs.Add(child.GetComponent<Buttom>());
-                    }
-                }
-
-                List<bool> PatternPart = new List<bool>();
-                PatternPart = BoolsForKey[key];
-
-                for (int k = 0; k < Bs.Count; k++)
-                {
-                    if (Bs[k].active != PatternPart[k])
-                    {
-                        Active = false;
-                        Debug.Log("Did not match!");
-                        break;
-                    }
-
-                    if (k == Bs.Count - 1)
-                    {
-                        Active = true;
-                        Debug.Log("Complete!");
-                    }
-                }
-            }
         }
     }
 
     private void SpawnButtons()
     {
-        foreach (GameObject G in Transforms)
+        Vector3 Pos = transform.position;
+        Quaternion Rot = transform.rotation;
+
+        Vector3 distX = 0.5f * transform.forward;
+        Vector3 distY = 0.5f * transform.right; 
+
+        for (int i = 0; i < 9; i++)
         {
-            //Vector3 Pos = Vector3.zero;
-            Vector3 Pos = G.transform.position;
-            Quaternion Rot = G.transform.rotation;
-
-            float dist = 0.5f * G.transform.localScale.x;
-
-            for (int i = 0; i < 9; i++)
+            if (i == 0)
             {
-                if (i == 0)
-                {
-                    Pos = new Vector3(0, 0, 0);
-                }
-                else if (i == 1)
-                {
-                    Pos = new Vector3(dist, 0, dist);
-                }
-                else if (i == 2)
-                {
-                    Pos = new Vector3(-dist, 0, dist);
-                }
-                else if (i == 3)
-                {
-                    Pos = new Vector3(-dist, 0, -dist);
-                }
-                else if (i == 4)
-                {
-                    Pos = new Vector3(dist, 0, -dist);
-                }
-                else if (i == 5)
-                {
-                    Pos = new Vector3(dist, 0, 0);
-                }
-                else if (i == 6)
-                {
-                    Pos = new Vector3(-dist, 0, 0);
-                }
-                else if (i == 7)
-                {
-                    Pos = new Vector3(0, 0, -dist);
-                }
-                else if (i == 8)
-                {
-                    Pos = new Vector3(0, 0, dist);
-                }
-
-                GameObject newB = Instantiate(Button);
-                newB.transform.localPosition = Pos;
-                newB.transform.rotation = Rot;
-                newB.transform.parent = G.transform;
-
-                Buttom B = newB.GetComponent<Buttom>();
-                B.isConstant = true;
-                B.OnColor = OnColor;
-                B.OffColor = OffColor;
+                Pos += new Vector3(0, 0, 0);
+            }
+            else if (i == 1)
+            {
+                Pos += distX + distY
+            }
+            else if (i == 2)
+            {
+                Pos += -distX + distY;
+            }
+            else if (i == 3)
+            {
+                Pos += new Vector3(-dist, 0, -dist);
+            }
+            else if (i == 4)
+            {
+                Pos += new Vector3(dist, 0, -dist);
+            }
+            else if (i == 5)
+            {
+                Pos += new Vector3(dist, 0, 0);
+            }
+            else if (i == 6)
+            {
+                Pos += new Vector3(-dist, 0, 0);
+            }
+            else if (i == 7)
+            {
+                Pos += new Vector3(0, 0, -dist);
+            }
+            else if (i == 8)
+            {
+                Pos += new Vector3(0, 0, dist);
             }
 
-            G.transform.localPosition = Vector3.zero;
-            int[] attemps = { };
-            //SetID(attemps);
+            GameObject newB = Instantiate(Button);
+            newB.transform.localPosition = Pos;
+            newB.transform.rotation = Rot;
+            newB.transform.parent = transform;
+
+            Buttom B = newB.GetComponent<Buttom>();
+            B.isConstant = true;
+            B.OnColor = OnColor;
+            B.OffColor = OffColor;
         }
+
+        //transform.localPosition = Vector3.zero;
+        int[] attemps = { };
+        SetID(attemps);
     }
 
     private void SetID(int[] attemps)
@@ -174,6 +141,8 @@ public class ButtonCompination : MonoBehaviour
     {
         foreach (string key in KeyIDs)
         {
+            BoolsForKey.Add(key, new List<bool>());
+
             if (key == "A1")
             {
                 Desider = new List<bool>
