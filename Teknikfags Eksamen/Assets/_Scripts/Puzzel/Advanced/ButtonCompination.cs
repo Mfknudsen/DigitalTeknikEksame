@@ -9,10 +9,12 @@ public class ButtonCompination : MonoBehaviour
     private string[] CurrentKeys;
     List<bool> Desider = new List<bool>();
     Dictionary<string, List<bool>> BoolsForKey = new Dictionary<string, List<bool>>();
-    public bool Active = false;
+    public bool active = false;
     public Material OffColor, OnColor;
-    public string activeIDs = "";
+    public string activeID = "";
     public List<Buttom> buttons = new List<Buttom>();
+    public Vector3 ToScale = new Vector3(1, 1, 1);
+    public GameObject Text3D;
 
     private void Start()
     {
@@ -27,29 +29,39 @@ public class ButtonCompination : MonoBehaviour
 
     private void CheckButtons()
     {
-        foreach (Buttom B in buttons)
-        {
+        List<bool> L = BoolsForKey[activeID];
 
+        bool b = true;
+
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            if (L[i] != buttons[i].active)
+            {
+                b = false;
+            }
         }
+
+        active = b;
     }
 
     private void SpawnButtons()
     {
-        Vector3 Pos = transform.position;
         Quaternion Rot = transform.rotation;
 
         Vector3 distX = 0.5f * transform.forward;
-        Vector3 distY = 0.5f * transform.right; 
+        Vector3 distY = 0.5f * transform.right;
 
         for (int i = 0; i < 9; i++)
         {
+            Vector3 Pos = transform.position;
+
             if (i == 0)
             {
-                Pos += new Vector3(0, 0, 0);
+                Pos += distX + distY;
             }
             else if (i == 1)
             {
-                Pos += distX + distY
+                Pos += distY;
             }
             else if (i == 2)
             {
@@ -57,27 +69,27 @@ public class ButtonCompination : MonoBehaviour
             }
             else if (i == 3)
             {
-                Pos += new Vector3(-dist, 0, -dist);
+                Pos += distX;
             }
             else if (i == 4)
             {
-                Pos += new Vector3(dist, 0, -dist);
+                Pos += Vector3.zero;
             }
             else if (i == 5)
             {
-                Pos += new Vector3(dist, 0, 0);
+                Pos += -distX;
             }
             else if (i == 6)
             {
-                Pos += new Vector3(-dist, 0, 0);
+                Pos += distX - distY;
             }
             else if (i == 7)
             {
-                Pos += new Vector3(0, 0, -dist);
+                Pos += -distY;
             }
             else if (i == 8)
             {
-                Pos += new Vector3(0, 0, dist);
+                Pos += -distX - distY;
             }
 
             GameObject newB = Instantiate(Button);
@@ -86,55 +98,25 @@ public class ButtonCompination : MonoBehaviour
             newB.transform.parent = transform;
 
             Buttom B = newB.GetComponent<Buttom>();
+            B.name = B.name + " " + i;
             B.isConstant = true;
             B.OnColor = OnColor;
             B.OffColor = OffColor;
+
+            buttons.Add(B);
         }
 
-        //transform.localPosition = Vector3.zero;
-        int[] attemps = { };
-        SetID(attemps);
+        transform.localScale = ToScale;
+
+        SetID();
     }
 
-    private void SetID(int[] attemps)
+    private void SetID()
     {
         int R = Mathf.FloorToInt(Random.Range(0, KeyIDs.Length));
-        bool run = true;
 
-        foreach (int n in attemps)
-        {
-            if (R == n)
-            {
-                run = false;
-            }
-        }
-
-        if (run)
-        {
-            for (int i = 0; i < KeyIDs.Length; i++)
-            {
-                string id = KeyIDs[i];
-
-                if (id != KeyIDs[R])
-                {
-                    if (CurrentKeys.Length > 0)
-                    {
-                        foreach (string s in CurrentKeys)
-                        {
-                            if (KeyIDs[R] == s)
-                            {
-                                attemps.SetValue(attemps.Length, R);
-                                SetID(attemps);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        else
-        {
-            SetID(attemps);
-        }
+        activeID = KeyIDs[R];
+        Text3D.GetComponent<TextMesh>().text = "" + activeID;
     }
 
     private void SetBools()

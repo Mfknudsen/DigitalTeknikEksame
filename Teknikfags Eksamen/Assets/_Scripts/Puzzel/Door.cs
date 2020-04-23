@@ -23,6 +23,9 @@ public class Door : MonoBehaviour
     public Vector3 targetTransform;  //Where the door will be trying to go.
     [HideInInspector]
     public bool byProcent = false;  //If the door will be opening by procent or by active.
+    bool instant = true;
+    bool hasOpend = false;
+    public GameObject[] ToUnlock;
     #endregion
 
     void Start()  //When the script start.
@@ -59,28 +62,51 @@ public class Door : MonoBehaviour
         {
             active = true;
         }
+
+        foreach (GameObject G in ToUnlock)
+            G.SetActive(false);
     }
 
     void Update()
     {
         CheckActive();
         MoveDoor();  //Move the door.
+
+        if (active && hasOpend)
+            foreach (GameObject G in ToUnlock)
+                G.SetActive(true);
     }
 
     public void MoveDoor()  //Will move the door.
     {
-        if (!OpenByRotation)
+        if (!instant)
         {
-            if (transform.position != targetTransform)  //If the door hasnt reached it new position then it will continue to move towards it.
+            if (!OpenByRotation)
             {
-                transform.position = Vector3.Lerp(transform.position, targetTransform, doorMoveSpeed * Time.deltaTime);  //Moving the door towards the taget location.
+                if (transform.position != targetTransform)  //If the door hasnt reached it new position then it will continue to move towards it.
+                {
+                    transform.position = Vector3.Lerp(transform.position, targetTransform, doorMoveSpeed * Time.deltaTime);  //Moving the door towards the taget location.
+                }
+            }
+            else
+            {
+                if (transform.eulerAngles != targetTransform)
+                {
+                    transform.rotation = Quaternion.Euler(Vector3.Lerp(transform.rotation.eulerAngles, targetTransform, doorMoveSpeed * Time.deltaTime));
+                }
             }
         }
         else
         {
-            if (transform.eulerAngles != targetTransform)
+            if (!OpenByRotation)
             {
-                transform.rotation = Quaternion.Euler(Vector3.Lerp(transform.rotation.eulerAngles, targetTransform, doorMoveSpeed * Time.deltaTime));
+                if (active)
+                    transform.position = OpenTransform;
+            }
+            else
+            {
+                if (active)
+                    transform.rotation = Quaternion.Euler(OpenTransform);
             }
         }
     }

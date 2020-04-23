@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class Keyhole : MonoBehaviour
 {
     //Setting up the public values and input.
     #region  public DATA
     public string keyword = "";  //Only key with the same keyword as this script will be albe to be placed into this keyhole.
-    public GameObject correctKey;  //The correct key for this keyhole.
+    public GameObject correctKey = null;  //The correct key for this keyhole.
     [HideInInspector]
     public GameObject currentKey;  //The current key that is placed in this keyhole.
-    [HideInInspector]
     public bool active = false;  //If this keyhole has the correct key in it.
     [HideInInspector]
     public int keysInRange = 0;  //All the keys that is in range of the keyhole. Based on a trigger collider.
@@ -33,9 +33,10 @@ public class Keyhole : MonoBehaviour
     void Update()
     {
         if (currentKey != null)  //If there is a key in this keyhole.
-        {
             updateKey();  //Updating the key.
-        }
+
+        if (active)
+            Visual.enabled = false;
     }
 
     void OnTriggerEnter(Collider other)  //When a collider of another object hits the trigger collider.
@@ -43,6 +44,7 @@ public class Keyhole : MonoBehaviour
         if (other.gameObject.GetComponent<Key>() != null)  //Checks if the object is a key.
         {
             Key k = other.gameObject.GetComponent<Key>();  //Getting the key script.
+
             if (k.keyword == keyword)
             {
                 keysInRange += 1;  //One more key is in range of this keyhole.
@@ -91,6 +93,7 @@ public class Keyhole : MonoBehaviour
     {
         if (currentKey == correctKey)  //If the key is the correct key then it will activate this keyhole.
         {
+            currentKey.GetComponent<Interactable>().enabled = false;
             active = true;
             return true;
         }
