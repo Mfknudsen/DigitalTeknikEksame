@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [Header("OSC")]
+    public OSC OSC;
     [Header("Spawnable Prefabs:")]
     public string[] Keys;
     public GameObject[] Prefabs;
@@ -16,13 +18,15 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
+        OSC.SetAddressHandler("/SpawnID", RecieveID);
+
         if (Keys.Length > 0 && Prefabs.Length > 0)
         {
             for (int i = 0; i < Keys.Length; i++)
             {
                 if (Prefabs[i] != null && Keys[i] != null)
                 {
-                    SpawnablePrefabs[Keys[i]] = Prefabs[i];
+                    SpawnablePrefabs.Add(Keys[i], Prefabs[i]);
                 }
             }
         }
@@ -42,9 +46,12 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    [Serializable]
-    public struct KeyAndPrefab
+    public void RecieveID(OscMessage msg)
     {
+        float newID = msg.GetFloat(0);
 
+        string fromFloat = Keys[(int)Mathf.Floor(newID)];
+
+        SpawnObject(fromFloat);
     }
 }

@@ -15,6 +15,7 @@ public class WireCutter : MonoBehaviour
     public SteamVR_Behaviour_Pose trackedHandLeft;
     public SteamVR_Behaviour_Pose trackedHandRight;
     public bool VR = false;
+    public int Show = 0;
     #endregion
 
     #region Private Data
@@ -22,7 +23,6 @@ public class WireCutter : MonoBehaviour
     private bool IsInHand = false;
     [Header("VR Resources")]
     private SteamVR_Action_Boolean Trigger;
-    bool cutNow = false;
     #endregion
 
     private void Start()
@@ -32,6 +32,8 @@ public class WireCutter : MonoBehaviour
 
     private void Update()
     {
+        Show = WiresInRange.Count;
+
         if (IsInHand)
         {
             if (Trigger.GetActive(currentHand))
@@ -54,11 +56,8 @@ public class WireCutter : MonoBehaviour
             }
             else if (!VR)
             {
-                if (Input.GetMouseButton(1) && !cutNow)
+                if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    cutNow = true;
-
-                    Debug.Log("Cutting using right click!");
                     Wire W = WiresInRange[0];
                     float Dist = Vector3.Distance(transform.position, W.transform.position);
 
@@ -72,22 +71,48 @@ public class WireCutter : MonoBehaviour
                             Dist = dist;
                         }
                     }
-                }
-                else if (!Input.GetMouseButton(1) && cutNow)
-                {
-                    cutNow = false;
+
+                    W.CutWire();
                 }
             }
+        }
+
+        if (!IsInHand && WiresInRange.Count > 0)
+        {
+            foreach (Wire W in WiresInRange)
+                W.InRange = 0;
+
+            WiresInRange = new List<Wire>();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Wire W = other.gameObject.GetComponent<Wire>();
+        Wire W = other.GetComponentInParent(typeof(Wire)) as Wire;
 
         if (W != null)
         {
-            WiresInRange.Add(W);
+            if (!W.CanBeFixed && W.Active)
+            {
+                W.InRange++;
+                WiresInRange.Add(W);
+            }
+            else if (W.CanBeFixed)
+            {
+                W.InRange++;
+                WiresInRange.Add(W);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Wire W = other.GetComponentInParent(typeof(Wire)) as Wire;
+
+        if (W != null)
+        {
+            W.InRange--;
+            WiresInRange.Remove(W);
         }
     }
 

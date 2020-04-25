@@ -110,8 +110,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isConstant: 0
   Visual: {fileID: 7413721967214645778}
-  OffColor: {fileID: 0}
-  OnColor: {fileID: 0}
+  OffColor: {fileID: 2100000, guid: 0b282a03d5e5ef34cb35824c278bab32, type: 2}
+  OnColor: {fileID: 2100000, guid: 79d4c4e46367b634ab97b9a01af5a66b, type: 2}
   active: 0
   rest: {fileID: 5824846422501449740}
   ACTIVATE: 0

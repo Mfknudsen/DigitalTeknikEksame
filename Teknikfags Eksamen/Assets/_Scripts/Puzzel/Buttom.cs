@@ -14,8 +14,6 @@ public class Buttom : MonoBehaviour
     [HideInInspector]
     public bool active = false;
     public Transform rest;
-    [Header("TEMP BUTTOMS:")]
-    public bool ACTIVATE = false;
     #endregion
 
     #region private DATA
@@ -55,11 +53,6 @@ public class Buttom : MonoBehaviour
             {
                 VisualRendere.material = OffColor;
             }
-        }
-
-        if (ACTIVATE == true)
-        {
-            TEMP();
         }
     }
 
@@ -111,17 +104,9 @@ public class Buttom : MonoBehaviour
         }
     }
 
-    void TEMP()
+    public void Reset()
     {
-        if (active)
-        {
-            SwitchActive(false);
-        }
-        else
-        {
-            SwitchActive(true);
-        }
-
-        ACTIVATE = false;
+        active = true;
+        targetTransform = downTransform;
     }
 }
