@@ -156,6 +156,7 @@
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Packages\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
     <None Include="Assets\Packages\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\_Shaders\new3DText.shader" />
     <None Include="Assets\Packages\UnityOSC-master\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
