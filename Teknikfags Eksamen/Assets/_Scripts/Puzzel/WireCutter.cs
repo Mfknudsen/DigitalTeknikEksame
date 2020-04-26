@@ -53,24 +53,27 @@ public class WireCutter : MonoBehaviour
             }
         }
 
-        Wire W = WiresInRange[0];
-        float Dist = Vector3.Distance(transform.position, W.transform.position);
-
-        foreach (Wire w in WiresInRange)
+        if (WiresInRange.Count > 0)
         {
-            float dist = Vector3.Distance(transform.position, w.transform.position);
-            w.InRange.Remove(this);
+            Wire W = WiresInRange[0];
+            float Dist = Vector3.Distance(transform.position, W.transform.position);
 
-            if (Dist > dist && (w.CanBeFixed && !w.active || w.active))
+            foreach (Wire w in WiresInRange)
             {
-                W = w;
-                Dist = dist;
+                float dist = Vector3.Distance(transform.position, w.transform.position);
+                w.InRange.Remove(this);
+
+                if (Dist > dist && (w.CanBeFixed && !w.active || w.active))
+                {
+                    W = w;
+                    Dist = dist;
+                }
             }
+
+            closestWire = W;
+
+            closestWire.InRange.Add(this);
         }
-
-        closestWire = W;
-
-        closestWire.InRange.Add(this);
 
         if (!IsInHand && WiresInRange.Count > 0)
         {

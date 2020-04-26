@@ -379,6 +379,7 @@ MonoBehaviour:
   VolumeText: {fileID: 2139613928}
   LoadingProgressText: {fileID: 1456130818}
   Cam: {fileID: 669189732}
+  VRCHECK: 0
 --- !u!114 &62562860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +392,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd613b92eb0fe64e9bfdb5a74e3adf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CheckForVR: 0
+  VR_Checker: {fileID: 0}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
 --- !u!1 &126243809
 GameObject:
   m_ObjectHideFlags: 0

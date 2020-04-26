@@ -22,7 +22,6 @@ public class Login : MonoBehaviour
     public TextMeshProUGUI LoadingProgressText;
     [Header("Camera")]
     public GameObject Cam;
-    [HideInInspector]
     public bool VRCHECK = false;
     #endregion
 
@@ -105,15 +104,15 @@ public class Login : MonoBehaviour
         while (!asyncLoad.isDone)
             yield return null;
 
-        if (!MPLoadComplete)
+        while (!MPLoadComplete)
             yield return null;
-
-        MP.CheckForVR = VRCHECK;
 
         GameObject G_Temp = GameObject.FindGameObjectWithTag("SettingsManager");
 
         if (G_Temp != null)
             G_Temp.GetComponent<Settings>().SetSettingsByOptions(this);
+
+        GameObject.FindGameObjectWithTag("UI_Counter").GetComponent<Player1UI>().startNow = true;
 
         Cursor.lockState = CursorLockMode.None;
         asyncLoad = null;

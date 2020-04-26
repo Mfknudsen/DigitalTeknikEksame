@@ -7,6 +7,7 @@ TagManager:
   - SettingsManager
   - Login
   - AudioPlayers
+  - UI_Counter
   layers:
   - Default
   - TransparentFX
