@@ -9,10 +9,14 @@ public class Tabel : MonoBehaviour
     public Barrel barrel;
     public Door D;
     public bool done = false;
+    public GameObject[] Areas;
 
     private void Start()
     {
         TextNumbers.SetActive(false);
+
+        foreach (GameObject G in Areas)
+            G.SetActive(false);
     }
 
     void Update()
@@ -23,7 +27,11 @@ public class Tabel : MonoBehaviour
 
             TextNumbers.SetActive(true);
 
-            D.gameObject.SetActive(false);
+            D.transform.rotation = Quaternion.Euler(D.OpenTransform);
+
+
+            foreach (GameObject G in Areas)
+                G.SetActive(true);
 
             done = true;
         }

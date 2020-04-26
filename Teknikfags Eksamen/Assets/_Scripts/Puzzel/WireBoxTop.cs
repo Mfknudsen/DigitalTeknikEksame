@@ -7,64 +7,67 @@ public class WireBoxTop : MonoBehaviour
     public Buttom[] Buttons;
     public bool active = false;
     public GameObject TextHighlighter;
+    public bool b1 = false, b2 = false, b3 = false, b4 = false;
     TextMesh TM;
+    public GameObject WC; 
 
     private void Start()
     {
         TM = TextHighlighter.GetComponent<TextMesh>();
-        TM.text = "READY FOR INPUT";
+        TM.text = "Basement Door Lock System";
     }
 
     private void Update()
     {
+        for (int i = 0; i < Buttons.Length; i++)
+        {
+            if (i == 0)
+                b1 = Buttons[i].active;
+            if (i == 1)
+                b2 = Buttons[i].active;
+            if (i == 2)
+                b3 = Buttons[i].active;
+            if (i == 3)
+                b4 = Buttons[i].active;
+        }
+
         if (!active)
         {
-            if (!Buttons[1].active)
+            if (b2)
             {
-                if (!Buttons[3].active)
+                if (b4)
                 {
-                    if (!Buttons[0].active)
+                    if (b1)
                     {
-                        if (!Buttons[2].active)
+                        if (b3)
                         {
-
+                            active = true;
                         }
                     }
-                    else
+                    else if (b3)
                     {
-                    
+                        ResetButtons();
                     }
                 }
-                else
+                else if (b1 || b3)
                 {
-                    bool t = false;
-                    foreach (Buttom b in Buttons)
-                        if (!b.active)
-                            t = true;
-
-                    if (t)
-                        foreach (Buttom b in Buttons)
-                        {
-                            TM.text = "WRONG! \nTRY AGAIN";
-                            b.Reset();
-                        }
+                    ResetButtons();
                 }
             }
-            else
+            else if (b1 || b3 || b4)
             {
-                bool t = false;
-                foreach (Buttom b in Buttons)
-                    if (!b.active)
-                        t = true;
-
-                if (t)
-                    foreach (Buttom b in Buttons)
-                    {
-                        TM.text = "WRONG! \nTRY AGAIN";
-                        b.Reset();
-                    }
+                ResetButtons();
             }
         }
         else Destroy(gameObject);
+    }
+
+    void ResetButtons()
+    {
+        foreach (Buttom B in Buttons)
+        {
+            B.active = true;
+            B.SwitchActive(true);
+        }
     }
 }

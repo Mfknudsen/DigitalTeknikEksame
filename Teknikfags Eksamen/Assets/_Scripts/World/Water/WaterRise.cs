@@ -6,47 +6,40 @@ public class WaterRise : MonoBehaviour
 {
     public bool ShouldRise = false;
     public float RiseSpeed = 1;
-    bool Rise = false;
     float TimeToRise = 0;
+    float toAdd = 0;
 
-    Vector3 startPos;
-    Vector3 markedPos;
-    Vector3 endPos;
+    Vector3 startPos = Vector3.zero;
+    Vector3 markedPos = Vector3.zero;
+    Vector3 endPos = Vector3.zero;
 
     public GameObject EndTransform;
 
     private void Start()
     {
         endPos = new Vector3(0, 4.5f, 0);
+
+        float DistToTravel = endPos.y - transform.position.y;
+        RiseSpeed = DistToTravel / (15 * 60);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (ShouldRise)
         {
-            Vector3 newPos = transform.up * RiseSpeed * Time.deltaTime;
-
+            Vector3 newPos = transform.up * RiseSpeed * Time.deltaTime + (transform.up * toAdd * RiseSpeed);
             transform.position = transform.position + newPos;
 
-            if (!Rise)
+            if (toAdd > 0)
             {
-                startPos = new Vector3(-5, 0.35f, -5);
-
-                StartCoroutine(TimeToFill());
-
-                Rise = true;
+                Debug.Log(toAdd);
+                toAdd = 0;
             }
         }
     }
 
-    IEnumerator TimeToFill()
+    public void IncreaseWaterLevel(float min)
     {
-        yield return new WaitForSeconds(1);
-
-        markedPos = transform.position;
-
-        Vector3 dist = markedPos - startPos;
-
-        TimeToRise = (endPos.y / dist.y) / 60;
+        toAdd = min * 60f;
     }
 }

@@ -124,6 +124,7 @@
     <Compile Include="Assets\_Scripts\MP_Login\MP.cs" />
     <Compile Include="Assets\_Scripts\Main\PauseMenu.cs" />
     <Compile Include="Assets\_Scripts\Main\Settings.cs" />
+    <Compile Include="Assets\_Scripts\Player\Player1UI.cs" />
     <Compile Include="Assets\_Scripts\Player\Player_Movement.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\Advanced\ButtonCompination.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\Barrel.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Assets\_Scripts\Puzzel\Tabel.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\Vase.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\Wire.cs" />
+    <Compile Include="Assets\_Scripts\Puzzel\WireBox.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\WireBoxTop.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\WireCutter.cs" />
     <Compile Include="Assets\_Scripts\World\Chimny\Spawner.cs" />

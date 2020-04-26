@@ -11,8 +11,7 @@ public class Buttom : MonoBehaviour
     public bool isConstant = false;
     public GameObject Visual;
     public Material OffColor, OnColor;
-    [HideInInspector]
-    public bool active = false;
+    public bool active = true;
     public Transform rest;
     #endregion
 
@@ -29,14 +28,8 @@ public class Buttom : MonoBehaviour
 
         downTransform = transform.position;
         restTransform = rest.transform.position;
-        if (!isConstant)
-        {
-            SwitchActive(false);
-        }
-        else
-        {
-            SwitchActive(true);
-        }
+
+        SwitchActive(true);
     }
 
     void Update()
@@ -44,16 +37,10 @@ public class Buttom : MonoBehaviour
         MoveButtom();
 
         if (isConstant)
-        {
             if (VisualRendere.material != OnColor && active)
-            {
                 VisualRendere.material = OnColor;
-            }
             else if (VisualRendere.material != OffColor && !active)
-            {
                 VisualRendere.material = OffColor;
-            }
-        }
     }
 
     void MoveButtom()
@@ -66,9 +53,7 @@ public class Buttom : MonoBehaviour
         }
 
         if (Visual.transform.position != targetTransform)
-        {
             Visual.transform.position = Vector3.Lerp(Visual.transform.position, targetTransform, 0.1f);
-        }
     }
 
     public void SwitchActive(bool isInHand)

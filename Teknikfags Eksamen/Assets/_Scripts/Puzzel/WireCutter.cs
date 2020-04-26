@@ -23,6 +23,8 @@ public class WireCutter : MonoBehaviour
     private bool IsInHand = false;
     [Header("VR Resources")]
     private SteamVR_Action_Boolean Trigger;
+    private Wire closestWire;
+    private bool ReadyToCut = true;
     #endregion
 
     private void Start()
@@ -34,53 +36,46 @@ public class WireCutter : MonoBehaviour
     {
         Show = WiresInRange.Count;
 
-        if (IsInHand)
+        if (IsInHand && ReadyToCut)
         {
             if (Trigger.GetActive(currentHand))
             {
-                Wire W = WiresInRange[0];
-                float Dist = Vector3.Distance(transform.position, W.transform.position);
-
-                foreach (Wire w in WiresInRange)
-                {
-                    float dist = Vector3.Distance(transform.position, w.transform.position);
-
-                    if (Dist > dist)
-                    {
-                        W = w;
-                        Dist = dist;
-                    }
-                }
-
-                CutWire(W);
+                CutWire(closestWire);
+                StartCoroutine(DelayNextCut());
             }
             else if (!VR)
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    Wire W = WiresInRange[0];
-                    float Dist = Vector3.Distance(transform.position, W.transform.position);
-
-                    foreach (Wire w in WiresInRange)
-                    {
-                        float dist = Vector3.Distance(transform.position, w.transform.position);
-
-                        if (Dist > dist)
-                        {
-                            W = w;
-                            Dist = dist;
-                        }
-                    }
-
-                    W.CutWire();
+                    CutWire(closestWire);
+                    StartCoroutine(DelayNextCut());
                 }
             }
         }
 
+        Wire W = WiresInRange[0];
+        float Dist = Vector3.Distance(transform.position, W.transform.position);
+
+        foreach (Wire w in WiresInRange)
+        {
+            float dist = Vector3.Distance(transform.position, w.transform.position);
+            w.InRange.Remove(this);
+
+            if (Dist > dist && (w.CanBeFixed && !w.active || w.active))
+            {
+                W = w;
+                Dist = dist;
+            }
+        }
+
+        closestWire = W;
+
+        closestWire.InRange.Add(this);
+
         if (!IsInHand && WiresInRange.Count > 0)
         {
-            foreach (Wire W in WiresInRange)
-                W.InRange = 0;
+            foreach (Wire w in WiresInRange)
+                w.InRange.Remove(this);
 
             WiresInRange = new List<Wire>();
         }
@@ -92,14 +87,12 @@ public class WireCutter : MonoBehaviour
 
         if (W != null)
         {
-            if (!W.CanBeFixed && W.Active)
+            if (!W.CanBeFixed && W.active)
             {
-                W.InRange++;
                 WiresInRange.Add(W);
             }
             else if (W.CanBeFixed)
             {
-                W.InRange++;
                 WiresInRange.Add(W);
             }
         }
@@ -111,7 +104,7 @@ public class WireCutter : MonoBehaviour
 
         if (W != null)
         {
-            W.InRange--;
+            W.InRange.Remove(this);
             WiresInRange.Remove(W);
         }
     }
@@ -141,5 +134,14 @@ public class WireCutter : MonoBehaviour
         }
 
         IsInHand = true;
+    }
+
+    IEnumerator DelayNextCut()
+    {
+        ReadyToCut = false;
+
+        yield return new WaitForSeconds(0.2f);
+
+        ReadyToCut = true;
     }
 }

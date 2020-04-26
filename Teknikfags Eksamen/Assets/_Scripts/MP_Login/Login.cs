@@ -22,6 +22,8 @@ public class Login : MonoBehaviour
     public TextMeshProUGUI LoadingProgressText;
     [Header("Camera")]
     public GameObject Cam;
+    [HideInInspector]
+    public bool VRCHECK = false;
     #endregion
 
     #region Private Data
@@ -101,21 +103,17 @@ public class Login : MonoBehaviour
         Cam.GetComponent<AudioListener>().enabled = false;
 
         while (!asyncLoad.isDone)
-        {
             yield return null;
-        }
 
         if (!MPLoadComplete)
-        {
             yield return null;
-        }
+
+        MP.CheckForVR = VRCHECK;
 
         GameObject G_Temp = GameObject.FindGameObjectWithTag("SettingsManager");
 
         if (G_Temp != null)
-        {
             G_Temp.GetComponent<Settings>().SetSettingsByOptions(this);
-        }
 
         Cursor.lockState = CursorLockMode.None;
         asyncLoad = null;

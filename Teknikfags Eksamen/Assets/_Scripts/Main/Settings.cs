@@ -13,6 +13,7 @@ public class Settings : MonoBehaviour
     [HideInInspector]
     public List<AudioSource> AudioSources = new List<AudioSource>();
     public PauseMenu PM;
+    public MP MP;
     #endregion
 
     #region Private Data

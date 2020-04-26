@@ -9,12 +9,12 @@ public class Wire : MonoBehaviour
     #region Public Data
     public GameObject FixedWire;
     public GameObject BrokenWire;
-    public bool Active = true;
+    public bool active = true;
     public Material[] Colors;
     public Material Highlight;
     public int ColorNumber = 0;
     public bool CanBeFixed = false;
-    public int InRange = 0;
+    public List<WireCutter> InRange = new List<WireCutter>();
     #endregion
 
     private void Start()
@@ -22,7 +22,7 @@ public class Wire : MonoBehaviour
         BrokenWire.GetComponent<Renderer>().material = Colors[ColorNumber];
         FixedWire.GetComponent<Renderer>().material = Colors[ColorNumber];
 
-        if (Active)
+        if (active)
         {
             FixedWire.SetActive(true);
             BrokenWire.SetActive(false);
@@ -36,7 +36,7 @@ public class Wire : MonoBehaviour
 
     private void Update()
     {
-        if (InRange > 0)
+        if (InRange.Count > 0)
         {
             BrokenWire.GetComponent<Renderer>().material = Highlight;
             FixedWire.GetComponent<Renderer>().material = Highlight;
@@ -53,7 +53,7 @@ public class Wire : MonoBehaviour
         FixedWire.SetActive(false);
         BrokenWire.SetActive(true);
 
-        Active = false;
+        active = false;
     }
 
     public void FixWire()
@@ -61,6 +61,6 @@ public class Wire : MonoBehaviour
         FixedWire.SetActive(true);
         BrokenWire.SetActive(false);
 
-        Active = true;
+        active = true;
     }
 }

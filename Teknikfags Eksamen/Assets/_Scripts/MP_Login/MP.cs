@@ -14,6 +14,12 @@ public class MP : MonoBehaviourPunCallbacks
     bool GameIsReady = false;
     #endregion
 
+    #region Public Data
+    public bool CheckForVR = true;
+    public GameObject VR_Checker;
+    public GameObject Player1, Player2;
+    #endregion
+
     private void Start()
     {
         PhotonNetwork.OfflineMode = false;
@@ -24,6 +30,8 @@ public class MP : MonoBehaviourPunCallbacks
         {
             L = GetComponent<Login>();
         }
+
+        StartCoroutine(CheckVR());
     }
 
     public void StartConnection()
@@ -67,5 +75,21 @@ public class MP : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.ConnectUsingSettings();
         }
+    }
+
+    private IEnumerator CheckVR()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (CheckForVR)
+            if (!VR_Checker.activeSelf)
+            {
+                Player2.SetActive(false);
+            }
+            else
+            {
+                Player1.SetActive(false);
+                Player2.SetActive(true);
+            }
     }
 }

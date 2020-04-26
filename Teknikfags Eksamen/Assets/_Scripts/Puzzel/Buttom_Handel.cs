@@ -23,9 +23,15 @@ public class Buttom_Handel : MonoBehaviour
 
     void OnDetachedFromHand()
     {
-        B.SwitchActive(false);  //When the object is no longer being hold then the buttom is no longer active.
-        transform.position = Visual.position;
-        transform.parent = Parent;
+        if (Visual == null)
+            Destroy(gameObject);
+        else
+        {
+            B.SwitchActive(false);  //When the object is no longer being hold then the buttom is no longer active.
+            transform.position = Visual.position;
+
+            transform.parent = Parent;
+        }
     }
 
     void OnAttachedToHand()
