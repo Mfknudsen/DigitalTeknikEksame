@@ -70,7 +70,7 @@ public class MP : MonoBehaviourPunCallbacks
 
     private IEnumerator TryConnectAgain()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 
         if (!GameIsReady)
         {

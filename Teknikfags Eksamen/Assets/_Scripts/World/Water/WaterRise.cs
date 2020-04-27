@@ -6,11 +6,8 @@ public class WaterRise : MonoBehaviour
 {
     public bool ShouldRise = false;
     public float RiseSpeed = 1;
-    float TimeToRise = 0;
     float toAdd = 0;
 
-    Vector3 startPos = Vector3.zero;
-    Vector3 markedPos = Vector3.zero;
     Vector3 endPos = Vector3.zero;
 
     public GameObject EndTransform;
