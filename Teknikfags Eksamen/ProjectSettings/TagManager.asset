@@ -8,6 +8,9 @@ TagManager:
   - Login
   - AudioPlayers
   - UI_Counter
+  - Player1
+  - Player2
+  - VRChecker
   layers:
   - Default
   - TransparentFX

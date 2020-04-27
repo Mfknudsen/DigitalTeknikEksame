@@ -64,6 +64,7 @@ public class MP : MonoBehaviourPunCallbacks
             Debug.Log("Player has joined a room");
             Debug.Log("There is currently " + PhotonNetwork.CountOfPlayers + " in this room.");
             L.MPLoadComplete = true;
+            StartCoroutine(CheckVR());
         }
     }
 
@@ -82,14 +83,31 @@ public class MP : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(1f);
 
         if (CheckForVR)
-            if (!VR_Checker.activeSelf)
+        {
+            if (!GameObject.FindGameObjectWithTag("VRChecker").activeSelf)
             {
-                Player2.SetActive(false);
+                foreach (GameObject G in GameObject.FindGameObjectsWithTag("Player2"))
+                    G.SetActive(false);
             }
             else
             {
-                Player1.SetActive(false);
-                Player2.SetActive(true);
+                foreach (GameObject G in GameObject.FindGameObjectsWithTag("Player1"))
+                    G.SetActive(false);
+                foreach (GameObject G in GameObject.FindGameObjectsWithTag("Player2"))
+                    G.SetActive(true);
             }
+        }
+        else
+        {
+            foreach (GameObject G in GameObject.FindGameObjectsWithTag("Player1"))
+                G.SetActive(true);
+            foreach (GameObject G in GameObject.FindGameObjectsWithTag("Player2"))
+                G.SetActive(false);
+        }
+    }
+
+    public void ChangeBool(bool newBool)
+    {
+        CheckForVR = newBool;
     }
 }

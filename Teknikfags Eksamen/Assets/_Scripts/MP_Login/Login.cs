@@ -112,9 +112,15 @@ public class Login : MonoBehaviour
         if (G_Temp != null)
             G_Temp.GetComponent<Settings>().SetSettingsByOptions(this);
 
-        GameObject.FindGameObjectWithTag("UI_Counter").GetComponent<Player1UI>().startNow = true;
+        if (GameObject.FindGameObjectWithTag("UI_Counter").GetComponent<Player1UI>() != null)
+            GameObject.FindGameObjectWithTag("UI_Counter").GetComponent<Player1UI>().startNow = true;
 
         Cursor.lockState = CursorLockMode.None;
         asyncLoad = null;
+    }
+
+    public void ChangeBool(bool newBool)
+    {
+        VRCHECK = newBool;
     }
 }
