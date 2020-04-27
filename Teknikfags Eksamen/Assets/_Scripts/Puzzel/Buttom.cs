@@ -11,7 +11,7 @@ public class Buttom : MonoBehaviour
     public bool isConstant = false;
     public GameObject Visual;
     public Material OffColor, OnColor;
-    public bool active = true;
+    public bool active = false;
     public Transform rest;
     #endregion
 
@@ -29,7 +29,7 @@ public class Buttom : MonoBehaviour
         downTransform = transform.position;
         restTransform = rest.transform.position;
 
-        SwitchActive(true);
+        SwitchActive(active);
     }
 
     void Update()

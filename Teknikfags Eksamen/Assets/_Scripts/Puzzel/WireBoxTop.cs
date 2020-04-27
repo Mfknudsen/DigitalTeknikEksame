@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class WireBoxTop : MonoBehaviour
 {
+    public GameObject[] Wires;
     public Buttom[] Buttons;
     public bool active = false;
     public GameObject TextHighlighter;
     public bool b1 = false, b2 = false, b3 = false, b4 = false;
     TextMesh TM;
-    public GameObject WC; 
+    public GameObject WC;
 
     private void Start()
     {
+        foreach (GameObject g in Wires)
+            g.SetActive(false);
+
         TM = TextHighlighter.GetComponent<TextMesh>();
         TM.text = "Basement Door Lock System";
     }
@@ -59,7 +63,13 @@ public class WireBoxTop : MonoBehaviour
                 ResetButtons();
             }
         }
-        else Destroy(gameObject);
+        else
+        {
+            foreach (GameObject g in Wires)
+                g.SetActive(true);
+
+            Destroy(gameObject);
+        }
     }
 
     void ResetButtons()

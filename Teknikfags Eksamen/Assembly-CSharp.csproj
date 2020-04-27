@@ -140,6 +140,7 @@
     <Compile Include="Assets\_Scripts\Puzzel\Lever.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\Lever_Handel.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\PressurePlate.cs" />
+    <Compile Include="Assets\_Scripts\Puzzel\RotateTowardsCamera.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\Tabel.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\Vase.cs" />
     <Compile Include="Assets\_Scripts\Puzzel\Wire.cs" />

@@ -16,6 +16,7 @@ public class WireCutter : MonoBehaviour
     public SteamVR_Behaviour_Pose trackedHandRight;
     public bool VR = false;
     public int Show = 0;
+    public Buttom B;
     #endregion
 
     #region Private Data
@@ -25,11 +26,13 @@ public class WireCutter : MonoBehaviour
     private SteamVR_Action_Boolean Trigger;
     private Wire closestWire;
     private bool ReadyToCut = true;
+    private RotateTowardsCamera RTC;
     #endregion
 
     private void Start()
     {
         Trigger = SteamVR_Input.GetBooleanAction("Trigger");
+        RTC = GetComponentInChildren<RotateTowardsCamera>();
     }
 
     private void Update()
@@ -82,6 +85,17 @@ public class WireCutter : MonoBehaviour
 
             WiresInRange = new List<Wire>();
         }
+
+        if (ReadyToCut && B.active)
+        {
+            CutWire(closestWire);
+
+            ReadyToCut = false;
+        }
+        else if (!B.active)
+        {
+            ReadyToCut = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -120,6 +134,8 @@ public class WireCutter : MonoBehaviour
     void OnDetachedFromHand()
     {
         IsInHand = false;
+
+        RTC.EndNow();
     }
 
     void OnAttachedToHand()
@@ -137,6 +153,8 @@ public class WireCutter : MonoBehaviour
         }
 
         IsInHand = true;
+
+        RTC.StartNow();
     }
 
     IEnumerator DelayNextCut()
