@@ -24,9 +24,12 @@ public class Keyhole : MonoBehaviour
         Visual = Highlight.GetComponent<MeshRenderer>();  //Getting the rendere from the game object.
         Visual.enabled = false;  //Making the object invisible.
 
-        if (correctKey.GetComponent<Key>() != null)  //Making sure the object label as the correct key has is a key.
+        if (correctKey != null)
         {
-            correctKey.GetComponent<Key>().keyword = keyword;  //Matching the keyword of the key with that of this script.
+            if (correctKey.GetComponent<Key>() != null)  //Making sure the object label as the correct key has is a key.
+            {
+                correctKey.GetComponent<Key>().keyword = keyword;  //Matching the keyword of the key with that of this script.
+            }
         }
     }
 

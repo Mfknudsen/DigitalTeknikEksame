@@ -86,15 +86,18 @@ public class WireCutter : MonoBehaviour
             WiresInRange = new List<Wire>();
         }
 
-        if (ReadyToCut && B.active)
+        if (B != null)
         {
-            CutWire(closestWire);
+            if (ReadyToCut && B.active)
+            {
+                CutWire(closestWire);
 
-            ReadyToCut = false;
-        }
-        else if (!B.active)
-        {
-            ReadyToCut = true;
+                ReadyToCut = false;
+            }
+            else if (!B.active)
+            {
+                ReadyToCut = true;
+            }
         }
     }
 
