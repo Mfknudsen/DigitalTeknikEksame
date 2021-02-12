@@ -265,11 +265,17 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UWP.Extensions">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.ProtocolBuffers">
+      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
       <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
@@ -277,26 +283,26 @@
     <Reference Include="websocket-sharp">
       <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="ByteConverter">
+      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonUtilities/Compression/plugins/ByteConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="FloatCrusher">
+      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonUtilities/TransformCrusher/plugins/FloatCrusher.dll</HintPath>
+    </Reference>
+    <Reference Include="HalFloat">
+      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonUtilities/TransformCrusher/plugins/HalFloat.dll</HintPath>
+    </Reference>
+    <Reference Include="QuatCompress">
+      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonUtilities/TransformCrusher/plugins/QuatCompress.dll</HintPath>
+    </Reference>
     <Reference Include="Valve.Newtonsoft.Json">
       <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
       <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/PackageCache/com.unity.render-pipelines.core@7.3.1/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
-    <Reference Include="QuatCompress">
-      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonUtilities/TransformCrusher/plugins/QuatCompress.dll</HintPath>
-    </Reference>
-    <Reference Include="ByteConverter">
-      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonUtilities/Compression/plugins/ByteConverter.dll</HintPath>
-    </Reference>
-    <Reference Include="HalFloat">
-      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonUtilities/TransformCrusher/plugins/HalFloat.dll</HintPath>
-    </Reference>
-    <Reference Include="FloatCrusher">
-      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Assets/Packages/Photon/PhotonUtilities/TransformCrusher/plugins/FloatCrusher.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/Users/Mads/Documents/GitHub/DigitalTeknikEksame/Teknikfags Eksamen/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
